@@ -27,7 +27,7 @@ public class User {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST})
+            CascadeType.PERSIST}, mappedBy = "users")
     private List<Notification> notifications;
     @ManyToMany(cascade = {
             CascadeType.DETACH,

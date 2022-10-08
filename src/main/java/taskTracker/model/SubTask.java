@@ -24,7 +24,7 @@ public class SubTask {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST})
+            CascadeType.PERSIST}, mappedBy = "workspaces")
     private List<User> userCards;
     @OneToOne(cascade = {
             CascadeType.DETACH,
@@ -32,4 +32,10 @@ public class SubTask {
             CascadeType.MERGE,
             CascadeType.PERSIST})
     private Estimation estimation;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST})
+    private Checklist checklist;
 }

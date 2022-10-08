@@ -25,5 +25,11 @@ public class Comment {
             CascadeType.REFRESH,
             CascadeType.MERGE,
             CascadeType.PERSIST})
-    private User userId;
+    private User user;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST})
+    private Card card;
 }

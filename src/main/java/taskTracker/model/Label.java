@@ -20,4 +20,10 @@ public class Label {
     private Long id;
     private String description;
     private LabelsColor color;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST})
+    private Card card;
 }

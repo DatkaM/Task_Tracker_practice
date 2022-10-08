@@ -21,7 +21,7 @@ public class Board {
     private String title;
     private boolean isFavorite = false;
     private String photoLink;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "board")
     private List<Column> columns;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
@@ -42,6 +42,6 @@ public class Board {
             CascadeType.REFRESH,
             CascadeType.MERGE,
             CascadeType.PERSIST})
-    private Workspace workspaceId;
+    private Workspace workspace;
 
 }

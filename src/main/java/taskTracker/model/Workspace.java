@@ -21,20 +21,25 @@ public class Workspace {
     private Long id;
     private String title;
     private boolean isFavorite = false;
-    private String photoLink;
+    private String photo;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST})
-    private List<User> leaders;
-    @OneToMany(cascade = CascadeType.ALL)
+            CascadeType.PERSIST}, mappedBy = "workspaces")
+    private List<User> admins;
+    @ManyToMany(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST},
+            mappedBy = "workspaces")
     private List<User> members;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
-    private List<Card> allIssues;
+//    @ManyToMany(cascade = {
+//            CascadeType.DETACH,
+//            CascadeType.REFRESH,
+//            CascadeType.MERGE,
+//            CascadeType.PERSIST}, mappedBy = "workspaces")
+//    private List<Card> allIssues;
 
 }
