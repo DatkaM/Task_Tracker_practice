@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -35,5 +36,8 @@ public class User {
             CascadeType.MERGE,
             CascadeType.PERSIST})
     private List<Workspace> workspaces;
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "admin")
+    private List<Board> boards;
+
 
 }

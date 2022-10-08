@@ -23,12 +23,12 @@ public class Board {
     private String photoLink;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "board")
     private List<Column> columns;
-    @ManyToMany(cascade = {
+    @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
             CascadeType.PERSIST})
-    private List<User> admins;
+    private User admin;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
