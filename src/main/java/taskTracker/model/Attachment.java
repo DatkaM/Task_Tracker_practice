@@ -20,4 +20,10 @@ public class Attachment {
     private Long id;
     private String documentLink;
     private LocalDateTime attachedDate;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST})
+    private Card card;
 }

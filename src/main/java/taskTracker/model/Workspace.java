@@ -26,7 +26,7 @@ public class Workspace {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST}, mappedBy = "workspaces")
+            CascadeType.PERSIST})
     private List<User> admins;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
@@ -35,11 +35,13 @@ public class Workspace {
             CascadeType.PERSIST},
             mappedBy = "workspaces")
     private List<User> members;
-//    @ManyToMany(cascade = {
-//            CascadeType.DETACH,
-//            CascadeType.REFRESH,
-//            CascadeType.MERGE,
-//            CascadeType.PERSIST}, mappedBy = "workspaces")
-//    private List<Card> allIssues;
+    @ManyToMany(cascade = {
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST})
+    private List<Card> allIssues;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    private User lead;
 
 }

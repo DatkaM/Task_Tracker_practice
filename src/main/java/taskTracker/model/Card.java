@@ -27,7 +27,8 @@ public class Card {
             CascadeType.MERGE,
             CascadeType.PERSIST})
     private List<User> members;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "card")
+    @OneToMany(cascade = {CascadeType.ALL},
+            mappedBy = "card")
     private List<Checklist> checklists;
     @OneToOne(cascade = {CascadeType.ALL})
     private Estimation estimation;
@@ -37,11 +38,13 @@ public class Card {
             CascadeType.MERGE,
             CascadeType.PERSIST})
     private Column column;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "card")
+    @OneToMany(cascade = {CascadeType.ALL},
+            mappedBy = "card")
     private List<Label> labels;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "card")
+    @OneToMany(cascade = {CascadeType.ALL},
+            mappedBy = "card")
     private List<Comment> comments;
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "card")
     private List<Attachment> attachments;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
