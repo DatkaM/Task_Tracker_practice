@@ -21,6 +21,8 @@ public class Column {
     private String title;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "column")
     private List<Card> cards;
+
+
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
