@@ -19,7 +19,7 @@ public class Column {
     @SequenceGenerator(name = "column_gen", sequenceName = "column_seq", allocationSize = 1)
     private Long id;
     private String title;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "column")
     private List<Card> cards;
     @ManyToOne(cascade = {
             CascadeType.DETACH,

@@ -20,13 +20,13 @@ public class Checklist {
     private Long id;
     private String name;
     private int taskTracker;
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "checklist")
     private List<SubTask> subTasks;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
             CascadeType.PERSIST})
-    private Card cardId;
+    private Card card;
 
 }
