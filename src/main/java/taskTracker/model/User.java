@@ -28,7 +28,8 @@ public class User {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST}, mappedBy = "users")
+            CascadeType.PERSIST},
+            mappedBy = "users")
     private List<Notification> notifications;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
@@ -36,7 +37,7 @@ public class User {
             CascadeType.MERGE,
             CascadeType.PERSIST})
     private List<Workspace> workspaces;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "admin")
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Board> boards;
 
 

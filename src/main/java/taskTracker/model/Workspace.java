@@ -26,7 +26,7 @@ public class Workspace {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST})
+            CascadeType.PERSIST}  )
     private List<User> admins;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
