@@ -3,6 +3,7 @@ package taskTracker.dto.response;
 import lombok.Getter;
 import lombok.Setter;
 import taskTracker.dto.request.WorkspaceRequest;
+import taskTracker.model.Role;
 
 import java.util.List;
 
@@ -15,5 +16,6 @@ public class UserResponse {
     private String surname;
     private String email;
     private String photo;
-    private List<WorkspaceRequest> projects;
+    private Role role;
+    private List<WorkspaceResponse> projects;
 }
