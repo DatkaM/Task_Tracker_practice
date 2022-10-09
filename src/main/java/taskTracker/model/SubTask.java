@@ -24,7 +24,9 @@ public class SubTask {
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.MERGE,
-            CascadeType.PERSIST}, mappedBy = "workspaces")
+            CascadeType.PERSIST},
+            mappedBy = "workspaces")
+    // User can invite only workspaces partisipant
     private List<User> userCards;
     @OneToOne(cascade = {
             CascadeType.DETACH,

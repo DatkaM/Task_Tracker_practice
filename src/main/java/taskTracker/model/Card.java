@@ -21,6 +21,7 @@ public class Card {
     private String title;
     private String description;
     private boolean isFavorite = false;
+    private boolean idArchive = false;
     @ManyToMany(cascade = {
             CascadeType.DETACH,
             CascadeType.REFRESH,
@@ -44,7 +45,8 @@ public class Card {
     @OneToMany(cascade = {CascadeType.ALL},
             mappedBy = "card")
     private List<Comment> comments;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "card")
+    @OneToMany(cascade = {CascadeType.ALL},
+            mappedBy = "card")
     private List<Attachment> attachments;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
