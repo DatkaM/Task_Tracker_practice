@@ -2,6 +2,7 @@ package taskTracker.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import taskTracker.dto.request.CardRequest;
 import taskTracker.model.Card;
 import taskTracker.model.User;
 
@@ -16,6 +17,6 @@ public class WorkspaceResponse {
     private String photo;
     private boolean isFavorite;
     private UserResponseForWorkspaceCreator creator;
-    private List<User> members;
-    private List<Card> allIssues;
+    private List<UserResponse> members;
+    private List<CardResponse> allIssues;
 }
