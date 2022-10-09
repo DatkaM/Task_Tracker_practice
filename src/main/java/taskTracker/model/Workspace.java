@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 
 @Entity
 @Table(name = "workspaces")
@@ -19,29 +21,17 @@ public class Workspace {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "workspace_gen")
     @SequenceGenerator(name = "workspace_gen", sequenceName = "workspace_seq",allocationSize = 1)
     private Long id;
-    private String title;
+    private String name;
     private boolean isFavorite = false;
     private String photo;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST}  )
+    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private List<User> admins;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST},
+    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST},
             mappedBy = "workspaces")
     private List<User> members;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private List<Card> allIssues;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {ALL})
     private User lead;
 
 }
