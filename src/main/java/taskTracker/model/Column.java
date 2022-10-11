@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "columns")
 @Getter
@@ -20,13 +22,8 @@ public class Column {
     private Long id;
     private String title;
     private boolean isArchive = false;
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "column")
+    @OneToMany(cascade = ALL, mappedBy = "column")
     private List<Card> cards;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private Board board;
 }

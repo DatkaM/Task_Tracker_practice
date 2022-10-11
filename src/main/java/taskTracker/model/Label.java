@@ -7,6 +7,8 @@ import taskTracker.enums.LabelsColor;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "labels")
 @Getter
@@ -20,10 +22,6 @@ public class Label {
     private Long id;
     private String description;
     private LabelsColor color;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private Card card;
 }

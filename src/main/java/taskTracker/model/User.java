@@ -1,10 +1,13 @@
 package taskTracker.model;
 
 import lombok.*;
+import taskTracker.enums.Role;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+
+import static javax.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "users")
@@ -22,23 +25,16 @@ public class User {
     private String name;
     private String surname;
     private String photoLink;
-    @OneToOne(cascade = CascadeType.ALL)
-    private AuthInfo authInfo;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST},
-            mappedBy = "users")
+    private String email;
+    private String password;
+    @OneToMany(cascade = {ALL}, mappedBy = "user")
     private List<Notification> notifications;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private List<Workspace> workspaces;
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {ALL})
     private List<Board> boards;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
 }

@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "attachments")
 @Getter
@@ -20,10 +22,6 @@ public class Attachment {
     private Long id;
     private String documentLink;
     private LocalDateTime attachedDate;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private Card card;
 }

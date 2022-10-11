@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "checklists")
 @Getter
@@ -20,13 +22,9 @@ public class Checklist {
     private Long id;
     private String name;
     private int taskTracker;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "checklist")
+    @OneToMany(cascade = {ALL}, mappedBy = "checklist")
     private List<SubTask> subTasks;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private Card card;
 
 }
