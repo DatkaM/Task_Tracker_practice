@@ -24,10 +24,7 @@ public class Workspace {
     private String name;
     private boolean isFavorite = false;
     private String photo;
-    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST})
-    private List<User> admins;
-    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST},
-            mappedBy = "workspaces")
+    @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST}, mappedBy = "workspaces")
     private List<User> members;
     @ManyToMany(cascade = {DETACH, REFRESH, MERGE, PERSIST})
     private List<Card> allIssues;

@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "notifications")
 @Getter
@@ -16,15 +18,18 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_gen")
-    @SequenceGenerator(name = "notification_gen", sequenceName = "notification_seq",allocationSize = 1)
+    @SequenceGenerator(name = "notification_gen", sequenceName = "notification_seq", allocationSize = 1)
     private Long id;
     private String text;
     private boolean read = false;
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST})
-    private List<User> users;
-
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
+    private User user;
+    @OneToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
+    private SubTask subTask;
+    @OneToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
+    private Card card;
+    @OneToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
+    private Column column;
+    @OneToOne(cascade = {DETACH, REFRESH, MERGE, PERSIST})
+    private Estimation estimation;
 }

@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "estimations")
 @Getter
@@ -21,4 +23,11 @@ public class Estimation {
     private LocalDate created;
     private LocalDate deadline;
     private int reminder;
+    private String text;
+    @OneToOne
+    private Card card;
+    @OneToOne
+    private SubTask subTask;
+    @OneToOne(cascade = {ALL})
+    private User user;
 }
